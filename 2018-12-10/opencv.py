@@ -1,0 +1,40 @@
+from skimage.measure import compare_ssim
+import cv2
+from PIL import Image
+
+crop_size = (256, 256)
+imageA = cv2.imread('D://images/11.jpg')
+imageB = cv2.imread('D://images/12.jpg')
+img_newA = cv2.resize(imageA, crop_size, interpolation = cv2.INTER_CUBIC)
+img_newB = cv2.resize(imageB, crop_size, interpolation = cv2.INTER_CUBIC)
+grayA = cv2.cvtColor(img_newA, cv2.COLOR_BGR2GRAY)
+grayB = cv2.cvtColor(img_newB, cv2.COLOR_BGR2GRAY)
+(score, diff) = compare_ssim(grayA, grayB, full=True)
+print("SSIM: {}".format(score))
+
+imageA = cv2.imread('D://images/8.jpg')
+imageB = cv2.imread('D://images/9.jpg')
+img_newA = cv2.resize(imageA, crop_size, interpolation = cv2.INTER_CUBIC)
+img_newB = cv2.resize(imageB, crop_size, interpolation = cv2.INTER_CUBIC)
+grayA = cv2.cvtColor(img_newA, cv2.COLOR_BGR2GRAY)
+grayB = cv2.cvtColor(img_newB, cv2.COLOR_BGR2GRAY)
+(score, diff) = compare_ssim(grayA, grayB, full=True)
+print("SSIM: {}".format(score))
+
+imageA = cv2.imread('D://images/1.jpg')
+imageB = cv2.imread('D://images/6.jpg')
+img_newA = cv2.resize(imageA, crop_size, interpolation = cv2.INTER_CUBIC)
+img_newB = cv2.resize(imageB, crop_size, interpolation = cv2.INTER_CUBIC)
+grayA = cv2.cvtColor(img_newA, cv2.COLOR_BGR2GRAY)
+grayB = cv2.cvtColor(img_newB, cv2.COLOR_BGR2GRAY)
+(score, diff) = compare_ssim(grayA, grayB, full=True)
+print("SSIM: {}".format(score))
+
+imageA = cv2.imread('D://images/9.jpg')
+imageB = cv2.imread('D://images/9copy.jpg')
+img_newA = cv2.resize(imageA, crop_size, interpolation = cv2.INTER_CUBIC)
+img_newB = cv2.resize(imageB, crop_size, interpolation = cv2.INTER_CUBIC)
+grayA = cv2.cvtColor(img_newA, cv2.COLOR_BGR2GRAY)
+grayB = cv2.cvtColor(img_newB, cv2.COLOR_BGR2GRAY)
+(score, diff) = compare_ssim(grayA, grayB, full=True)
+print("SSIM: {}".format(score))
