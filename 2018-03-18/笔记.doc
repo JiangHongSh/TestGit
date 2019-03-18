@@ -1,0 +1,62 @@
+IDF的计算方式更改为通过百度搜索相关词汇的总页面数和全网网页的总页面数，但使用百度好像不行，因为通过百度搜素无法获取全网的网页数，最多显示1亿，应该是没有使用具体真实的数据；采用谷歌搜索好像可行，下面为10个最常见的英文单词，谷歌搜索出来的网页结果最多的都是 25,270,000,000 （2千5百2十7亿）假定这就是谷歌搜索中英文网页的总数吧，然后“brazil”这个单词的搜索结果是1,800,000,000（18亿），计算它的IDF
+ IDF=log（2527/180）= 1.147
+之前的IDF log（4/2）= 0.301(首先语料不够多，如果后期用数据库中的所有新闻为语料，也不是不能用这种方法)
+
+1 the 25,270,000,000
+2 be 25,270,000,000
+3 of 25,270,000,000
+4 and 25,270,000,000
+5 a 25,270,000,000
+6 to 25,270,000,000
+7 in 25,270,000,000
+8 he 10,880,000,000
+9 have 233,000,000
+10 it 25,270,000,000
+
+接下来就是爬取 搜索到的数量了。 
+https://www.google.com.hk/search?q=company
+爬取的速度特别慢，无法接受的地步，暂时放弃。
+
+
+
+这周要做什么：1.idf计算方法优化
+2.将数据库爬取的新闻存储到数据库中（主要）
+新闻表：NewsId，标题，内容，标题img
+图片表：ImgId，NewsId，img
+用户表：UserId，用户名，联系方式、密码（加密）、关联QQ号（？）、关联微信号（？）
+评论表：CommentId，评论内容、NewsId、UserId、Like（点赞）
+收藏表：Id，UserId、NewsId
+
+
+整理爬BBC新闻网的代码
+应用tfidf
+查询数据库中所有的数据
+
+Top words in document 1
+	Word: flight, TF-IDF: 0.11932
+	Word: ethiopian, TF-IDF: 0.07177
+	Word: airlines, TF-IDF: 0.05966
+	Word: boeing, TF-IDF: 0.05741
+	Word: aircraft, TF-IDF: 0.04773
+	Word: plane, TF-IDF: 0.04773
+	Word: addis, TF-IDF: 0.04306
+	Word: ababa, TF-IDF: 0.04306
+	Word: air, TF-IDF: 0.04135
+	Word: system, TF-IDF: 0.03659
+
+
+
+Top words in document 33
+	Word: flight, TF-IDF: 0.11932
+	Word: ethiopian, TF-IDF: 0.07177
+	Word: airlines, TF-IDF: 0.05966
+	Word: boeing, TF-IDF: 0.05741
+	Word: aircraft, TF-IDF: 0.04773
+	Word: plane, TF-IDF: 0.04773
+	Word: addis, TF-IDF: 0.04306
+	Word: ababa, TF-IDF: 0.04306
+	Word: air, TF-IDF: 0.04135
+	Word: system, TF-IDF: 0.03659
+
+
+
